@@ -1,0 +1,120 @@
+
+## Overview
+
+This document defines naming standards used throughout the data warehouse.
+
+## General Rules
+
+- Use lowercase letters.
+- Use `snake_case`.
+- Use English names.
+- Avoid spaces.
+- Avoid special characters.
+- Avoid SQL reserved words.
+- Keep names simple and descriptive.
+
+## Table Naming
+
+### Bronze Layer
+
+Bronze tables use the original source system and entity name.
+
+Format:
+
+`<source>_<entity>`
+
+Examples:
+
+- `crm_cust_info`
+- `crm_prd_info`
+- `crm_sales_details`
+- `erp_cust_az12`
+- `erp_loc_a101`
+- `erp_px_cat_g1v2`
+
+### Silver Layer
+
+Silver tables follow the same source-based naming convention.
+
+Format:
+
+`<source>_<entity>`
+
+Examples:
+
+- `crm_cust_info`
+- `crm_prd_info`
+- `crm_sales_details`
+
+### Gold Layer
+
+Gold tables use business-friendly names.
+
+Dimension tables:
+
+`dim_<entity>`
+
+Fact tables:
+
+`fact_<entity>`
+
+Examples:
+
+- `dim_customers`
+- `dim_products`
+- `fact_sales`
+
+## Column Naming
+
+### Surrogate Keys
+
+Use the `_key` suffix.
+
+Example:
+
+`customer_key`
+
+`product_key`
+
+### Identifiers
+
+Use descriptive names such as:
+
+- `customer_id`
+- `product_id`
+- `order_number`
+
+### Dates
+
+Use descriptive names ending with `_date`.
+
+Examples:
+
+- `order_date`
+- `shipping_date`
+- `birthdate`
+- `create_date`
+
+## Stored Procedures
+
+Loading procedures follow:
+
+`load_<layer>`
+
+Examples:
+
+- `load_bronze`
+- `load_silver`
+- `load_gold`
+
+## Summary
+
+| Object | Convention | Example |
+|---|---|---|
+| Bronze table | `<source>_<entity>` | `crm_cust_info` |
+| Silver table | `<source>_<entity>` | `crm_cust_info` |
+| Dimension | `dim_<entity>` | `dim_customers` |
+| Fact | `fact_<entity>` | `fact_sales` |
+| Surrogate key | `<entity>_key` | `customer_key` |
+| Date column | Descriptive `_date` | `order_date` |
+| Procedure | `load_<layer>` | `load_bronze` |
